@@ -1,0 +1,23 @@
+<strong><h1><%= @post.title %></h1></strong>
+
+<p>
+  <%= @post.body %>
+</p>
+
+<small ><p style="font-size: 10px;">
+  Written by <%= @writer %>
+</p></small>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
+
+<%= form_with(model: [@post, @post.comments.build]) do |f| %>
+  <%= f.label 'New comment' %>
+  <%= f.text_area :body%>
+  <%= f.submit 'Submit' %>
+<% end %>
+
+<% @post.comments.each do |comment| %>
+  <p><%= comment.body %></p>
+  <p>posted by <%= User.find_by(params[comment.commenter_user_id]).email %></p>
+<% end %>

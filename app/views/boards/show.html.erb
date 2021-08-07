@@ -1,0 +1,14 @@
+<%= turbo_frame_tag "board" do %>
+  <h1><%= @board.title %></h1>
+
+  <p>
+    <%= @board.body %>
+  </p>
+
+  <p>
+    written by <%= @board.user.email %>
+  </p>
+
+  <%= link_to 'Edit', edit_board_path(@board) %> |
+  <%= link_to 'Back', root_path %>
+<% end %>

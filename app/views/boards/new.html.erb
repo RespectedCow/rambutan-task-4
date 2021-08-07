@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "board" do %>
+    <h1>New Board</h1>
+
+    <%= render 'form', board: @board %>
+
+    <%= link_to 'Back', root_path %>
+<% end %>
